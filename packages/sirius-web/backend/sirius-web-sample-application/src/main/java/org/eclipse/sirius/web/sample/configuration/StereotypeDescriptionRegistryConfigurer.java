@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.web.sample.configuration;
 
-import fr.obeo.dsl.designer.sample.flow.FlowFactory;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessFactory;
 
 import java.util.List;
 import java.util.UUID;
@@ -131,7 +131,7 @@ public class StereotypeDescriptionRegistryConfigurer implements IStereotypeDescr
     }
 
     private String getEmptyFlowContent() {
-        return this.stereotypeBuilder.getStereotypeBody(List.of(FlowFactory.eINSTANCE.createSystem()));
+        return this.stereotypeBuilder.getStereotypeBody(List.of(BasicprocessFactory.eINSTANCE.createDiagram()));
     }
 
     private String getRobotFlowContent() {

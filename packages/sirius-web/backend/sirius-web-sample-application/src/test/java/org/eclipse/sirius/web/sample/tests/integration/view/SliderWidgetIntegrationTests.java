@@ -19,8 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-
-import fr.obeo.dsl.designer.sample.flow.FlowPackage;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessPackage;
 
 import java.time.Duration;
 import java.util.Map;
@@ -183,7 +182,7 @@ public class SliderWidgetIntegrationTests extends AbstractIntegrationTests {
                 }
                 """;
 
-        var createRootObjectInput = new CreateRootObjectInput(UUID.randomUUID(), this.projectId.toString(), this.documentId, FlowPackage.eNS_URI, "System");
+        var createRootObjectInput = new CreateRootObjectInput(UUID.randomUUID(), this.projectId.toString(), this.documentId, BasicprocessPackage.eNS_URI, "System");
 
         var createRootObjectExecutionInput = ExecutionInput.newExecutionInput().query(createRootObjectQuery)
                 .variables(Map.of("input", this.objectMapper.convertValue(createRootObjectInput, new TypeReference<Map<String, Object>>() { }))).build();

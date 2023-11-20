@@ -12,13 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.web.sample.configuration;
 
-import fr.obeo.dsl.designer.sample.flow.CompositeProcessor;
-import fr.obeo.dsl.designer.sample.flow.DataFlow;
-import fr.obeo.dsl.designer.sample.flow.DataSource;
-import fr.obeo.dsl.designer.sample.flow.FlowElementUsage;
-import fr.obeo.dsl.designer.sample.flow.FlowFactory;
-import fr.obeo.dsl.designer.sample.flow.Processor;
-import fr.obeo.dsl.designer.sample.flow.System;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessFactory;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -150,36 +144,8 @@ public class FlowProjectTemplatesInitializer implements IProjectTemplateInitiali
     }
 
     private String getRobotFlowContent() {
-        System system = FlowFactory.eINSTANCE.createSystem();
-        system.setName("NewSystem");
-
-        CompositeProcessor compositeProcessor = FlowFactory.eINSTANCE.createCompositeProcessor();
-        compositeProcessor.setName("CompositeProcessor1");
-        compositeProcessor.setCapacity(10);
-        compositeProcessor.setLoad(0);
-        system.getElements().add(compositeProcessor);
-
-        Processor processor = FlowFactory.eINSTANCE.createProcessor();
-        processor.setName("Processor1");
-        processor.setCapacity(10);
-        processor.setLoad(0);
-        processor.setVolume(2);
-        processor.setWeight(10);
-        compositeProcessor.getElements().add(processor);
-
-        DataSource dataSource = FlowFactory.eINSTANCE.createDataSource();
-        dataSource.setName("DataSource1");
-        dataSource.setVolume(6);
-        system.getElements().add(dataSource);
-
-        DataFlow dataFlow = FlowFactory.eINSTANCE.createDataFlow();
-        dataFlow.setUsage(FlowElementUsage.STANDARD);
-        dataFlow.setCapacity(6);
-        dataFlow.setLoad(6);
-        dataFlow.setTarget(processor);
-        dataSource.getOutgoingFlows().add(dataFlow);
-
-        return this.stereotypeBuilder.getStereotypeBody(List.of(system));
+        com.nividous.studio.sirius.model.basicprocess.Diagram diagram = BasicprocessFactory.eINSTANCE.createDiagram();
+        return this.stereotypeBuilder.getStereotypeBody(List.of(diagram));
     }
 
     private Optional<DiagramDescription> findDiagramDescription(IEditingContext editingContext, String label) {

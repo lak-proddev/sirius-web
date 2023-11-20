@@ -12,12 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.web.sample.configuration;
 
-import fr.obeo.dsl.designer.sample.flow.DataFlow;
-import fr.obeo.dsl.designer.sample.flow.Fan;
-import fr.obeo.dsl.designer.sample.flow.FlowPackage;
-import fr.obeo.dsl.designer.sample.flow.Named;
-import fr.obeo.dsl.designer.sample.flow.PowerOutput;
-import fr.obeo.dsl.designer.sample.flow.util.FlowSwitch;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessPackage;
+import com.nividous.studio.sirius.model.basicprocess.Diagram;
+import com.nividous.studio.sirius.model.basicprocess.util.BasicprocessSwitch;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -27,24 +24,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @author arichard
  */
-public class FlowLabelFeatureSwitch extends FlowSwitch<EAttribute> {
-    @Override
-    public EAttribute caseNamed(Named object) {
-        return FlowPackage.eINSTANCE.getNamed_Name();
-    }
+public class FlowLabelFeatureSwitch extends BasicprocessSwitch<EAttribute> {
 
     @Override
-    public EAttribute caseFan(Fan object) {
-        return FlowPackage.eINSTANCE.getFlowElement_Status();
-    }
-
-    @Override
-    public EAttribute caseDataFlow(DataFlow object) {
-        return FlowPackage.eINSTANCE.getFlowElement_Usage();
-    }
-
-    @Override
-    public EAttribute casePowerOutput(PowerOutput object) {
-        return FlowPackage.eINSTANCE.getPowerOutput_Power();
+    public EAttribute caseDiagram(Diagram object) {
+        return BasicprocessPackage.eINSTANCE.getDiagram_ProcessFile();
     }
 }

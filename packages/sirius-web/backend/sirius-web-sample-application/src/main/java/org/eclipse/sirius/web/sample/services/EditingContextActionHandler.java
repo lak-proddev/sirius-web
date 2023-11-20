@@ -21,7 +21,7 @@ import static org.eclipse.sirius.web.sample.services.EditingContextActionProvide
 import static org.eclipse.sirius.web.sample.services.EditingContextActionProvider.PAPAYA_VIEW_ID;
 import static org.eclipse.sirius.web.sample.services.EditingContextActionProvider.ROBOT_FLOW_ID;
 
-import fr.obeo.dsl.designer.sample.flow.FlowFactory;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -130,8 +130,8 @@ public class EditingContextActionHandler implements IEditingContextActionHandler
 
     private void createEmptyFlowResource(ResourceSet resourceSet) {
         JsonResource resource = new JSONResourceFactory().createResourceFromPath(UUID.randomUUID().toString());
-        resource.getContents().add(FlowFactory.eINSTANCE.createSystem());
-        resource.eAdapters().add(new ResourceMetadataAdapter("Flow"));
+        resource.getContents().add(BasicprocessFactory.eINSTANCE.createDiagram());
+        resource.eAdapters().add(new ResourceMetadataAdapter("Robot"));
         resourceSet.getResources().add(resource);
     }
 

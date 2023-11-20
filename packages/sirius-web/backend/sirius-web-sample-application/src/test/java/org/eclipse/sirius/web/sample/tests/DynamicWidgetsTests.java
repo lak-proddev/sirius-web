@@ -15,9 +15,9 @@ package org.eclipse.sirius.web.sample.tests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
-import fr.obeo.dsl.designer.sample.flow.FlowFactory;
-import fr.obeo.dsl.designer.sample.flow.FlowPackage;
-import fr.obeo.dsl.designer.sample.flow.System;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessFactory;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessPackage;
+import com.nividous.studio.sirius.model.basicprocess.Diagram;
 
 import java.io.IOException;
 import java.util.List;
@@ -81,7 +81,7 @@ public class DynamicWidgetsTests {
 
     private EditingContext editingContext;
 
-    private System system;
+    private Diagram system;
 
     private ComposedAdapterFactory composedAdapterFactory;
 
@@ -97,10 +97,10 @@ public class DynamicWidgetsTests {
         this.composedAdapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
         editingDomain.setAdapterFactory(this.composedAdapterFactory);
-        editingDomain.getResourceSet().getPackageRegistry().put(FlowPackage.eNS_URI, FlowPackage.eINSTANCE);
+        editingDomain.getResourceSet().getPackageRegistry().put(BasicprocessPackage.eNS_URI, BasicprocessPackage.eINSTANCE);
         this.editingContext = new EditingContext(UUID.randomUUID().toString(), editingDomain, Map.of());
 
-        this.system = FlowFactory.eINSTANCE.createSystem();
+        this.system = BasicprocessFactory.eINSTANCE.createDiagram();
         this.system.setName("Robot");
         this.system.eAdapters().add(new IDAdapter(UUID.randomUUID()));
 

@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 import static org.eclipse.sirius.components.forms.tests.FormAssertions.assertThat;
 
-import fr.obeo.dsl.designer.sample.flow.FlowPackage;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessPackage;
 
 import java.io.IOException;
 import java.util.List;
@@ -101,7 +101,7 @@ public class ViewDetailsRenderingIntegrationTests {
         composedAdapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
         this.editingDomain.setAdapterFactory(composedAdapterFactory);
-        this.editingDomain.getResourceSet().getPackageRegistry().put(FlowPackage.eNS_URI, FlowPackage.eINSTANCE);
+        this.editingDomain.getResourceSet().getPackageRegistry().put(BasicprocessPackage.eNS_URI, BasicprocessPackage.eINSTANCE);
         this.editingContext = new EditingContext(UUID.randomUUID().toString(), this.editingDomain, Map.of());
 
         this.view = this.loadFixture("ViewCompletionFixture.xmi");
@@ -159,7 +159,7 @@ public class ViewDetailsRenderingIntegrationTests {
         assertThat(proposals).hasSize(16);
 
         proposals = this.requestCompletion(field, "flow::PowerLink", "flow::Power".length());
-        List<EClass> candidates = List.of(FlowPackage.Literals.POWER_INPUT, FlowPackage.Literals.POWER_LINK, FlowPackage.Literals.POWER_OUTPUT, FlowPackage.Literals.POWERED);
+        List<EClass> candidates = List.of(BasicprocessPackage.Literals.ACTIVITY);
         this.checkProposalsText(proposals, candidates.stream().map(this::domainTypeName).toList());
     }
 

@@ -12,8 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.web.sample.configuration;
 
-import fr.obeo.dsl.designer.sample.flow.Named;
-import fr.obeo.dsl.designer.sample.flow.util.FlowSwitch;
+import com.nividous.studio.sirius.model.basicprocess.Diagram;
+import com.nividous.studio.sirius.model.basicprocess.util.BasicprocessSwitch;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -23,9 +23,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  *
  * @author arichard
  */
-public class FlowEditableSwitch extends FlowSwitch<Boolean> {
+public class FlowEditableSwitch extends BasicprocessSwitch<Boolean> {
+
     @Override
-    public Boolean caseNamed(Named object) {
+    public Boolean caseDiagram(Diagram object) {
         return true;
     }
 

@@ -12,8 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.web.sample.configuration;
 
-import fr.obeo.dsl.designer.sample.flow.FlowPackage;
-import fr.obeo.dsl.designer.sample.flow.provider.FlowItemProviderAdapterFactory;
+import com.nividous.studio.sirius.model.basicprocess.BasicprocessPackage;
+import com.nividous.studio.sirius.model.basicprocess.provider.BasicprocessItemProviderAdapterFactory;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EPackage;
@@ -43,17 +43,17 @@ import org.springframework.context.annotation.Configuration;
 public class SampleEMFConfiguration {
     @Bean
     public AdapterFactory flowAdapterFactory() {
-        return new FlowItemProviderAdapterFactory();
+        return new BasicprocessItemProviderAdapterFactory();
     }
 
     @Bean
     public EPackage flowEPackage() {
-        return FlowPackage.eINSTANCE;
+        return BasicprocessPackage.eINSTANCE;
     }
 
     @Bean
     public ILabelFeatureProvider flowLabelFeatureProvider() {
-        return new LabelFeatureProvider(FlowPackage.eINSTANCE.getNsURI(), new FlowLabelFeatureSwitch(), new FlowEditableSwitch());
+        return new LabelFeatureProvider(BasicprocessPackage.eINSTANCE.getNsURI(), new FlowLabelFeatureSwitch(), new FlowEditableSwitch());
     }
 
     @Bean
