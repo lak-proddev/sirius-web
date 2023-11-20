@@ -51,10 +51,6 @@
 			<id>github-flow</id>
 			<url>https://maven.pkg.github.com/ObeoNetwork/Flow-Designer</url>
 		</repository>
-		<repository>
-			<id>github-bpmn</id>
-			<url>https://maven.pkg.github.com/ObeoNetwork/BPMN-Designer</url>
-		</repository>
  		<repository>
  			<id>Eclipse EEF</id>
  			<name>EEF Repository - Snapshots</name>
@@ -153,21 +149,6 @@
 			<groupId>fr.obeo.dsl.designer.sample.flow</groupId>
 			<artifactId>fr.obeo.dsl.designer.sample.flow.design</artifactId>
 			<version>${flow.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>BPMN2</groupId>
-			<artifactId>org.obeonetwork.dsl.bpmn2</artifactId>
-			<version>${bpmn.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>BPMN2</groupId>
-			<artifactId>org.obeonetwork.dsl.bpmn2.edit</artifactId>
-			<version>${bpmn.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>BPMN2</groupId>
-			<artifactId>org.obeonetwork.dsl.bpmn2.design</artifactId>
-			<version>${bpmn.version}</version>
 		</dependency>
  		<dependency>
  			 <groupId>org.eclipse.eef</groupId>
